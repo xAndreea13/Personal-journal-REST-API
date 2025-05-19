@@ -2,11 +2,11 @@ A simple GUIless, REST API implemented in Python with FastAPI framework, for man
 
 REST Endpoints:
 
-| Metodă | URL             | Descriere                  |
-| ------ | --------------- | -------------------------- |
-| POST   | `/entries/`     | Creează o intrare nouă     |
-| GET    | `/entries/`     | Returnează toate intrările |
-| GET    | `/entries/{id}` | Returnează o intrare       |
+| Metodă | URL             | Descriere                  | Status |
+| ------ | --------------- | -------------------------- | ------ |
+| POST   | `/entries/`     | Creează o intrare nouă     | Done   |
+| GET    | `/entries/`     | Returnează toate intrările | Done   |
+| GET    | `/entries/{id}` | Returnează o intrare       | 
 | PUT    | `/entries/{id}` | Actualizează o intrare     |
 | DELETE | `/entries/{id}` | Șterge o intrare           |
 
