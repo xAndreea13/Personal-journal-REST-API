@@ -65,3 +65,19 @@ def update_entry(entry_id, entry):
             f.seek(0)
             json.dump(data, f, indent=3)
             f.truncate()
+
+def check_id(entry_id):
+    if DB_FILE.exists():
+        with open(DB_FILE, "r") as f:
+            data = json.load(f)
+            if entry_id not in data:
+                return False
+            else:
+                return True
+
+def return_entry(entry_id):
+    if DB_FILE.exists():
+        with open(DB_FILE, "r") as f:
+            data = json.load(f)
+            if entry_id in data:
+                return data[entry_id]

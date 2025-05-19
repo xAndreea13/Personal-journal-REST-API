@@ -20,7 +20,7 @@ def print_message():
 #create a new entry with POST
 @app.post("/entries/")
 def create_entry(entry: JournalEntry):
-    entry_id = str(uuid4())
+    entry_id = str(uuid4())[:4]
     add_entry(entry_id, entry)
     return {"id": entry_id, "entry": entry}
 
@@ -28,3 +28,10 @@ def create_entry(entry: JournalEntry):
 @app.get("/entries/")
 def read_entries():
     return load_db()
+
+#get a certain 
+@app.get("/entries/{entry_id}")
+def read_entry(entry_id: str):
+    if check_id(entry_id) == False:
+        raise HTTPException(status_code=404, detail="Entry not found")
+    return return_entry(entry_id)
