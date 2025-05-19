@@ -11,7 +11,7 @@ class JournalEntry(BaseModel):
     title: str
     content: str
     tags: Optional[List[str]] = []
-    create_ad: datetime = datetime.now()
+    create_at: str = datetime.now().isoformat()
 
 # used specifically for UPDATING a journal entry
 class JournalEntryUpdate(BaseModel):
