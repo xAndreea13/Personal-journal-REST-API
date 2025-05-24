@@ -7,8 +7,8 @@ REST Endpoints:
 | POST   | `/entries/`     | Creează o intrare nouă     | Done   |
 | GET    | `/entries/`     | Returnează toate intrările | Done   |
 | GET    | `/entries/{id}` | Returnează o intrare       | Done   |
-| PUT    | `/entries/{id}` | Actualizează o intrare     |
-| DELETE | `/entries/{id}` | Șterge o intrare           |
+| PUT    | `/entries/{id}` | Actualizează o intrare     | Done   |
+| DELETE | `/entries/{id}` | Șterge o intrare           | Done   |
 
 Journal app main entity fields:
 - id
