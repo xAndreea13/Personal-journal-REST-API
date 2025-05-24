@@ -28,6 +28,11 @@ RUN THE APP: uvicorn main:app --host 127.0.0.1 --port 8000 --reload
 
 DELETE req: http DELETE http://127.0.0.1:8000/entries/<id>
 
-PUT req (add): http POST http://127.0.0.1:8000/entries/ Content-Type:application/json --raw '{\"title\": \"Test2\", \"content\": \"Hello there world! it is a very beautiful day today!\", \"tags\": [\"fastapi\", \"python\"]}'
+POST req (add): 
+http POST http://127.0.0.1:8000/entries/ \
+    title="New Entry" \
+    content="Today I learned about HTTP methods in Linux!" \
+    tags:='["linux", "httpie", "fastapi"]'
 
 PUT req (update): 
+http PUT http://127.0.0.1:8000/entries/f8dc     title="Updated Entry"     content="Updated content here"     tags:='["put", "update"]'
