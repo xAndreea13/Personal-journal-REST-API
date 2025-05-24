@@ -27,5 +27,7 @@ jurnal_api/
 RUN THE APP: uvicorn main:app --host 127.0.0.1 --port 8000 --reload
 
 DELETE req: http DELETE http://127.0.0.1:8000/entries/<id>
+
 PUT req (add): http POST http://127.0.0.1:8000/entries/ Content-Type:application/json --raw '{\"title\": \"Test2\", \"content\": \"Hello there world! it is a very beautiful day today!\", \"tags\": [\"fastapi\", \"python\"]}'
+
 PUT req (update): 
