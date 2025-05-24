@@ -15,6 +15,6 @@ class JournalEntry(BaseModel):
 
 # used specifically for UPDATING a journal entry
 class JournalEntryUpdate(BaseModel):
-    title: Optional[List[str]]
-    content: Optional[List[str]]
+    title: Optional[str]
+    content: Optional[str]
     tags: Optional[List[str]]

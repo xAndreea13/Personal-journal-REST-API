@@ -60,14 +60,14 @@ def delete_db_entry(entry_id):
 
 
 #update an entry from database
-def update_entry(entry_id, entry):
+def update_db_entry(entry_id, entry):
     if DB_FILE.exists():
         with open(DB_FILE, "r+") as f:
             data = json.load(f)
             if entry_id in data:
                 data[entry_id]["title"] = entry.title
                 data[entry_id]["content"] = entry.content
-                data[entry_id]["tags"].append(entry.tags)
+                data[entry_id]["tags"] = entry.tags or []  # Replace entirely
             f.seek(0)
             json.dump(data, f, indent=3)
             f.truncate()
