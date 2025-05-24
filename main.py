@@ -40,14 +40,10 @@ def read_entry(entry_id: str):
 def update_entry(entry_id: str, update: JournalEntryUpdate):
     if not check_id(entry_id):
         raise HTTPException(status_code=404, detail="Entry not found")
-
     existing = return_entry(entry_id)  # This returns a dict
-    existing_model = JournalEntry(**existing)  # Convert to Pydantic model
-
+    existing_model = JournalEntry(**existing)  # Convert to Pydantic mode
     updated_model = existing_model.copy(update=update.dict(exclude_unset=True))
-
     update_db_entry(entry_id, updated_model)
-
     return updated_model
 
 @app.delete("/entries/{entry_id}")
