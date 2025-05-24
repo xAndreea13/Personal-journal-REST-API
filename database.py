@@ -43,15 +43,21 @@ def add_entry(entry_id: str, entry: JournalEntry):
         f.truncate()
 
 #delete an entry from the database
-def delete_entry(entry_id):
+def delete_db_entry(entry_id):
     if DB_FILE.exists():
         with open(DB_FILE, "r+") as f:
             data = json.load(f)
+
             if entry_id in data:
                 del data[entry_id]
-            f.seek(0)
-            json.dump(data, f, indent=3)
-            f.truncate()
+                f.seek(0)
+                json.dump(data, f, indent=3)
+                f.truncate()
+                return True
+            else:
+                return False
+    return False
+
 
 #update an entry from database
 def update_entry(entry_id, entry):

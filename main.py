@@ -15,7 +15,7 @@ init_db()
 #for the root of project
 @app.get("/", response_class=PlainTextResponse)
 def print_message():
-    return "Hello, and welcome to this RESTful API app"
+    return "Hello, and welcome to this RESTful API"
 
 #create a new entry with POST
 @app.post("/entries/")
@@ -29,9 +29,26 @@ def create_entry(entry: JournalEntry):
 def read_entries():
     return load_db()
 
-#get a certain 
+#get a certain entry
 @app.get("/entries/{entry_id}")
 def read_entry(entry_id: str):
     if check_id(entry_id) == False:
         raise HTTPException(status_code=404, detail="Entry not found")
     return return_entry(entry_id)
+
+#update a certain entry
+@app.put("/entries/{entry_id}")
+def update_entry(entry_id: str, update: JournalEntryUpdate):
+    if check_id(entry_id) == False:
+        raise HTTPException(status_code=404, detail="Entry not found")
+    existing = return_entry(entry_id)
+    updated = existing.copy(update=update.dict(exclude_unset=True))
+    update_entry(entry_id, existing)
+    return updated
+
+@app.delete("/entries/{entry_id}")
+def delete_entry(entry_id: str):
+    if check_id(entry_id) == False:
+        raise HTTPException(status_code=404, detail="Entry not found")
+    delete_db_entry(entry_id)
+    return {"detail": "Entry deleted"}
